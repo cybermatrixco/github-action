@@ -10,5 +10,13 @@ LABEL "com.github.actions.description"="Wraps the Serverless Framework to enable
 LABEL "com.github.actions.icon"="zap"
 LABEL "com.github.actions.color"="red"
 
+RUN apt-get update -qq && apt-get install -qqy \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    lxc \
+    iptables
+    
+RUN curl -sSL https://get.docker.com/ | sh
 RUN npm i -g serverless@2.x
 ENTRYPOINT ["serverless"]
